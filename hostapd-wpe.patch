@@ -2927,8 +2927,10 @@ diff -rupN hostapd-2.2/src/wpe/wpe.c hostapd-2.2-wpe/src/wpe/wpe.c
 +    va_end(ap);
 +
 +    va_start(ap, fmt);
-+    if ( wpe_conf.wpe_logfile_fp != NULL )
++    if ( wpe_conf.wpe_logfile_fp != NULL ) {
 +        vfprintf(wpe_conf.wpe_logfile_fp, fmt, ap);
++        fflush(wpe_conf.wpe_logfile_fp);
++    }
 +    va_end(ap);
 +}
 +
